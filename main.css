@@ -1,0 +1,48 @@
+body {
+  background-color: rgba(255,131,0,.8);
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+h1 {
+  display: inline;
+  float: left;
+}
+
+nav {
+  position: fixed;
+  z-index: 10;
+  margin-top: -50px;
+}
+
+h3 {
+  margin-top: 50px;
+}
+
+
+#messageOutput {
+
+  height: 500px;
+  margin: 0 auto;
+}
+
+#input  {
+  width: 700px;
+  height: 20px;
+  margin-top: 14px;
+}
+
+
+.CSSlightTheme {
+  background-color: rgba(255, 255, 255, .5);
+  color: black;
+}
+
+.CSSdarkTheme {
+  background-color: black;
+  color: white;
+}
+
+.CSSlargeText {
+  font-size: 2em;
+}
