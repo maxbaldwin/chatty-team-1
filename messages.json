@@ -1,0 +1,24 @@
+{
+  "messages":[
+    {
+      "id": 1,
+      "firstMessage":"Hello there!"
+    },
+    {
+      "id": 2,
+      "secondMessage":"Go away!"
+    },
+    {
+      "id": 3,
+      "thirdMessage":"Welcome back!"
+    },
+    {
+      "id": 4,
+      "fourthMessage":"Leave again."
+    },
+    {
+      "id": 5,
+      "fifthMessage":"Nice to see you again."
+    }
+  ]
+}
