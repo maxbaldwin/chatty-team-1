@@ -1,18 +1,18 @@
 var Chatty = (function(messages) {
-  var messageData = [];
   var currentMessage;
+  var contentInHTML = "";
 
   function loadMessages () {
     messageData = JSON.parse(this.response);
     var messageElement = document.getElementById("messageOutput");
       for (var i = 0; i < messageData.messages.length; i++) {
         currentMessage = messageData.messages[i];
-        console.log(currentMessage)
+        console.log(messageData);
 
-        currentMessage += `<div>Basic User Message: ${currentMessage.userMessage}</div>`;
+        contentInHTML += `<div>Basic User Message: <h1>${currentMessage.userMessage}</h1></div>`;
 
       }
-        messageElement.innerHTML = currentMessage;
+        messageElement.innerHTML = contentInHTML;
 
 
   console.log(messageCall);
