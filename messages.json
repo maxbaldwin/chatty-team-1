@@ -2,23 +2,23 @@
   "messages":[
     {
       "id": 1,
-      "firstMessage":"Hello there!"
+      "userMessage":"Hello there!"
     },
     {
       "id": 2,
-      "secondMessage":"Go away!"
+      "userMessage":"Go away!"
     },
     {
       "id": 3,
-      "thirdMessage":"Welcome back!"
+      "userMessage":"Welcome back!"
     },
     {
       "id": 4,
-      "fourthMessage":"Leave again."
+      "userMessage":"Leave again."
     },
     {
       "id": 5,
-      "fifthMessage":"Nice to see you again."
+      "userMessage":"Nice to see you again."
     }
   ]
 }
