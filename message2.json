@@ -1,0 +1,19 @@
+{
+  "messages":[
+    {
+      "name": "Sarah",
+      "time": "11133214162",
+      "userMessage":"Welcome back!"
+    },
+    {
+      "name": "Lee",
+      "time": "11133214173",
+      "userMessage":"Leave again."
+    },
+    {
+      "name": "Max",
+      "time": "11133214187",
+      "userMessage":"Nice to see you again."
+    }
+  ]
+}
