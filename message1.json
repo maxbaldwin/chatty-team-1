@@ -1,0 +1,14 @@
+{
+  "messages":[
+    {
+      "name": "Bin",
+      "time": "11133214141",
+      "userMessage":"Hello there!"
+    },
+    {
+      "name": "Alicia",
+      "time": "11133214151",
+      "userMessage":"Go away!"
+    }
+  ]
+}
