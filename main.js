@@ -8,11 +8,15 @@ clear.addEventListener("click", clearFunction);
 darkTheme.addEventListener("change", themeFunction);
 largeText.addEventListener("change", textFunction);
 
-function enterFunction(event) {
- if (event.keyCode === 13) {
-    console.log("enter key has been pressed in the input field")
- }
-}
+
+inputEmt.addEventListener("keypress", function(){
+	if(event.keyCode === 13 && this.value != ""){
+		var msg = this.value;
+		Chatty.setMsgInDOM("messageOutput", msg);
+		this.value = "";
+		btnEmt.removeAttribute("disabled");
+	}
+});
 
 function clearFunction() {
   messageOutput.innerHTML = "";
