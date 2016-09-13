@@ -7,8 +7,20 @@
 </head>
 <body>
   <nav>
-    <img src="tnvols.jpg" alt="TN VOLS VERSION">
+    <img src="tnvols.jpg" alt="TN VOLS VERSION" id="vol-state">
+  
+    <div id="user-select">
+    <label >Select UserName:</label>
+    <input type="radio" name="user" value="Alicia">Alicia
+    <input type="radio" name="user" value="Bin">Bin
+    <input type="radio" name="user" value="Lee">Lee
+    <input type="radio" name="user" value="Max">Max
+    <input type="radio" name="user" value="Sarah">Sarah
+    </div>
+    
     <input id="input">
+
+    <button>Send</button>
     <button id="clear">Clear message board</button>
     <form id="checkboxForm">
       <input type="checkbox" name="Dark Theme" id="darkTheme">Dark Theme
