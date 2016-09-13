@@ -15,11 +15,11 @@ function msgToDOM(dataObj){
 
 // handle event on checkbox
 checkboxEmt.addEventListener("change", function(){
-	if (event.target.id === "darkTheme") {
-  	outputEmt.classList.toggle("CSSdarkTheme");
+  if (event.target.id === "darkTheme") {
+    outputEmt.classList.toggle("CSSdarkTheme");
   }
   if (event.target.id === "largeText"){
-  	outputEmt.classList.toggle("CSSlargeText");
+    outputEmt.classList.toggle("CSSlargeText");
   }
 });
 
