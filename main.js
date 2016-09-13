@@ -3,6 +3,7 @@ var btnEmt = document.getElementById("clear");
 var outputEmt = document.getElementById("messageOutput");
 var checkboxEmt = document.getElementById("checkboxForm");
 
+
 // load and display json file
 Chatty.getJson("message1.json", msgToDOM);
 Chatty.getJson("message2.json", msgToDOM);
@@ -17,11 +18,13 @@ function msgToDOM(dataObj){
 checkboxEmt.addEventListener("change", function(){
   if (event.target.id === "darkTheme") {
     outputEmt.classList.toggle("CSSdarkTheme");
+    outputEmt.classList.toggle("message1234");
   }
-  if (event.target.id === "largeText"){
+  else if (event.target.id === "largeText"){
     outputEmt.classList.toggle("CSSlargeText");
   }
 });
+
 
 
 document.querySelector("body").addEventListener("click", function(event) {
@@ -37,28 +40,28 @@ document.querySelector("body").addEventListener("click", function(event) {
     inputEmt.value = targetMsg[2].innerHTML;
     inputEmt.focus();
     inputEmt.addEventListener("keypress", function editText(e){
-      if(e.keyCode === 13){       
+      if(e.keyCode === 13){
         var msg = {"name":targetMsg[0].innerHTML, "time":targetMsg[1].innerHTML, "userMessage":this.value};
         Chatty.setMsgInDOM(msg, event.target.id);
         this.blur();
         this.value = "";
         inputEmt.removeEventListener("keypress", editText);
         event.target.parentNode.style.border = "";
-      } 
+      }
     });
   }
 
   // collect message from input and display
   if (event.target.id === "input") {
     inputEmt.addEventListener("keypress", function inputText(e){
-      if(e.keyCode === 13 && this.value != ""){       
+      if(e.keyCode === 13 && this.value != ""){
         var msg = {"name":"name", "time":Math.floor(Date.now() / 1000), "userMessage":this.value};
-        Chatty.setMsgInDOM(msg);    
+        Chatty.setMsgInDOM(msg);
         this.blur();
         this.value = "";
         btnEmt.removeAttribute("disabled");
         inputEmt.removeEventListener("keypress", inputText);
-      }  
+      }
     });
   }
 
@@ -73,3 +76,4 @@ document.querySelector("body").addEventListener("click", function(event) {
     btnEmt.setAttribute("disabled", true);
   }
 });
+
