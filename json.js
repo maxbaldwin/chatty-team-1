@@ -1,29 +1,18 @@
 var Chatty = (function(messages) {
-  var messageData = [];
-  var currentMessage;
 
-  function loadMessages () {
-    messageData = JSON.parse(this.response);
-    var messageElement = document.getElementById("messageOutput");
-      for (var i = 0; i < messageData.messages.length; i++) {
-        currentMessage = messageData.messages[i];
-        console.log(currentMessage)
+  messages.getJson = function(jsonFile, callbackToInvoke){
+    var messageData;
+    var messageCall = new XMLHttpRequest();
+    messageCall.addEventListener("load", loadMessages)
+    messageCall.open("GET", jsonFile);
+    messageCall.send();
 
-        currentMessage += `<div>Basic User Message: ${currentMessage.userMessage}</div>`;
+    function loadMessages () {
+      messageData = JSON.parse(this.response);
+      callbackToInvoke(messageData);
+    }
+  };
 
-      }
-        messageElement.innerHTML = currentMessage;
-
-
-  console.log(messageCall);
-  return messages
-  }
-
-
-  var messageCall = new XMLHttpRequest();
-  messageCall.addEventListener("load", loadMessages)
-  messageCall.open("GET", "messages.JSON");
-  messageCall.send();
-
+  return messages;
 
 })(Chatty || {})

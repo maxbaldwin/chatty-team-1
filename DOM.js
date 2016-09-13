@@ -1,8 +1,9 @@
-var chatty = function (newChatty) {
+var Chatty = function (newChatty) {
 	newChatty.deleteMessage = function(elementId){
 		var element = document.getElementById(elementId);
-		element.parentNode.removeChild(element);
+		Chatty.removeMsg(element.parentNode);
+		element.parentNode.remove();
 	}	
 	return newChatty;
-}(chatty || {})
+}(Chatty || {})
 
