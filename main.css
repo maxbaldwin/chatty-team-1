@@ -36,11 +36,11 @@ h3 {
 
 
 #messageOutput {
-  height: 600px;
+
   margin: 0 auto;
-  font-size: 1.2em;
-  padding-left: 2%;
+
   padding-top: 2%;
+
 }
 
 #input  {
@@ -66,6 +66,49 @@ margin-right: 350px;
   border: 2px solid white;
 }
 
+.CSSnormalText {
+  font-size: 1.2em;
+}
+
 .CSSlargeText {
   font-size: 2em;
 }
+
+.message1234:nth-of-type(2n) {
+  background-color: darkgray;
+
+}
+
+.message1234 {
+  padding: 2%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
