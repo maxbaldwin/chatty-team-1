@@ -28,6 +28,7 @@ nav {
   width: 956px;
   font-size: 1.2em;
   border: 2px solid black;
+  padding-bottom: 22px;
 }
 
 h3 {
@@ -47,11 +48,13 @@ h3 {
   width: 30%;
   height: 20px;
   margin-top: 14px;
+  margin-left: 100px;
 }
 
 #checkboxForm {
 float: right;
-margin-right: 350px;
+margin-right: 230px;
+margin-top: 10px;
 }
 
 .CSSlightTheme {
@@ -83,9 +86,15 @@ margin-right: 350px;
   padding: 2%;
 }
 
+#vol-state {
+  float: left;
+}
 
-
-
+#user-select {
+  float: right;
+  margin-right: 70px;
+  margin-top: 30px;
+}
 
 
 
