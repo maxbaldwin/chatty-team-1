@@ -1,7 +1,7 @@
 var inputEmt = document.getElementById("input");
 var btnClearEmt = document.getElementById("clear");
 var outputEmt = document.getElementById("messageOutput");
-var checkboxEmt = document.getElementById("checkboxForm");
+var btnSaveChange = document.getElementById("saveChange");
 var userName = document.getElementsByClassName("userName");
 var sendBtn = document.getElementById("send");
 var editTarget = "";
@@ -13,7 +13,7 @@ function msgToDOM(dataObj){
   for (var i = 0; i < dataObj.messages.length; i++){
     Chatty.setMsgInDOM(dataObj.messages[i]);
   }
-  btnEmt.removeAttribute("disabled");
+  btnClearEmt.removeAttribute("disabled");
 }
 
 // collect message from input and display
@@ -21,15 +21,13 @@ var name = "Anonymous";
 inputEmt.addEventListener("keypress", inputText);
 sendBtn.addEventListener("click", sendText);
 
-// handle event on checkbox
-checkboxEmt.addEventListener("change", function changeTheme(){
-  if (event.target.id === "darkTheme") {
-    outputEmt.classList.toggle("CSSdarkTheme");
-    outputEmt.classList.toggle("message1234");
-  }
-  else if (event.target.id === "largeText"){
-    outputEmt.classList.toggle("CSSlargeText");
-  }
+
+btnSaveChange.addEventListener("click", function changeTheme(){
+  var bgColor = document.getElementById("custom-background").value;
+  var textColor = document.getElementById("custom-text").value;
+  console.log(bgColor, textColor);
+  outputEmt.style.background = bgColor;
+  outputEmt.style.color = textColor;
 });
 
 // Handle the click event on clear button
