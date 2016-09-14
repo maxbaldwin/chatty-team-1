@@ -1,8 +1,10 @@
 var inputEmt = document.getElementById("input");
-var btnEmt = document.getElementById("clear");
+var btnClearEmt = document.getElementById("clear");
 var outputEmt = document.getElementById("messageOutput");
 var checkboxEmt = document.getElementById("checkboxForm");
-
+var userName = document.getElementsByClassName("userName");
+var sendBtn = document.getElementById("send");
+var editTarget = "";
 
 // load and display json file
 Chatty.getJson("message1.json", msgToDOM);
@@ -14,8 +16,13 @@ function msgToDOM(dataObj){
   btnEmt.removeAttribute("disabled");
 }
 
+// collect message from input and display
+var name = "Anonymous";
+inputEmt.addEventListener("keypress", inputText);
+sendBtn.addEventListener("click", sendText);
+
 // handle event on checkbox
-checkboxEmt.addEventListener("change", function(){
+checkboxEmt.addEventListener("change", function changeTheme(){
   if (event.target.id === "darkTheme") {
     outputEmt.classList.toggle("CSSdarkTheme");
     outputEmt.classList.toggle("message1234");
@@ -25,6 +32,15 @@ checkboxEmt.addEventListener("change", function(){
   }
 });
 
+// Handle the click event on clear button
+btnClearEmt.addEventListener("click", function(){
+  outputEmt.innerHTML = "";
+  Chatty.removeMsg();
+  // disable clear button when no message appear
+  if (Chatty.getMsg().length === 0){
+    btnEmt.setAttribute("disabled", true);
+  }
+});
 
 
 document.querySelector("body").addEventListener("click", function(event) {
@@ -35,45 +51,93 @@ document.querySelector("body").addEventListener("click", function(event) {
 
   // Handle the click event on edit button
   if (event.target.className === "btnEdit"){
+    if (editTarget != "" && editTarget != event.target.id) {
+      document.getElementById(editTarget).parentNode.style.border = "";
+    }
+    editTarget = event.target.id;
     event.target.parentNode.style.border = "1px solid black";
     var targetMsg = event.target.parentNode.childNodes;
     inputEmt.value = targetMsg[2].innerHTML;
     inputEmt.focus();
-    inputEmt.addEventListener("keypress", function editText(e){
-      if(e.keyCode === 13){
-        var msg = {"name":targetMsg[0].innerHTML, "time":targetMsg[1].innerHTML, "userMessage":this.value};
-        Chatty.setMsgInDOM(msg, event.target.id);
-        this.blur();
-        this.value = "";
-        inputEmt.removeEventListener("keypress", editText);
-        event.target.parentNode.style.border = "";
-      }
-    });
-  }
-
-  // collect message from input and display
-  if (event.target.id === "input") {
-    inputEmt.addEventListener("keypress", function inputText(e){
-      if(e.keyCode === 13 && this.value != ""){
-        var msg = {"name":"name", "time":Math.floor(Date.now() / 1000), "userMessage":this.value};
-        Chatty.setMsgInDOM(msg);
-        this.blur();
-        this.value = "";
-        btnEmt.removeAttribute("disabled");
-        inputEmt.removeEventListener("keypress", inputText);
-      }
-    });
-  }
-
-  // Handle the click event on clear button
-  if (event.target.id === "clear") {
-    outputEmt.innerHTML = "";
-    Chatty.removeMsg();
-  }
-
-  // disable clear button when no message appear
-  if (Chatty.getMsg().length === 0){
-    btnEmt.setAttribute("disabled", true);
+    inputEmt.removeEventListener("keypress", inputText);
+    inputEmt.addEventListener("keypress", editText);
+    sendBtn.removeEventListener("click", sendText);
+    sendBtn.addEventListener("click", sendEditText);
   }
 });
 
+function inputText(e){
+  if(e.keyCode === 13 && inputEmt.value != ""){
+    for (var i = 0; i < userName.length; i++){
+      if(userName[i].checked){
+        name = userName[i].value;
+        break;
+      }
+    }
+    var msg = {"name":name, "time":Math.floor(Date.now() / 1000), "userMessage":inputEmt.value};
+    Chatty.setMsgInDOM(msg);
+    inputEmt.blur();
+    inputEmt.value = "";
+    name = "";
+    btnEmt.removeAttribute("disabled");
+  }
+}
+
+function sendText(e){
+  if (inputEmt.value != ""){
+    for (var i = 0; i < userName.length; i++){
+      if(userName[i].checked){
+        name = userName[i].value;
+        break;
+      }
+    }
+    var msg = {"name":name, "time":Math.floor(Date.now() / 1000), "userMessage":inputEmt.value};
+    Chatty.setMsgInDOM(msg);
+    inputEmt.blur();
+    inputEmt.value = "";
+    name = "Anonymous";
+    btnEmt.removeAttribute("disabled");
+  }
+}
+
+function editText(e){
+  if(e.keyCode === 13){
+    for (var i = 0; i < userName.length; i++){
+      if(userName[i].checked){
+        name = userName[i].value;
+        break;
+      }
+    }
+    var msg = {"name":name, "time":Math.floor(Date.now() / 1000), "userMessage":inputEmt.value};
+    Chatty.setMsgInDOM(msg, editTarget);
+    inputEmt.blur();
+    inputEmt.value = "";
+    name = "Anonymous";
+    event.target.parentNode.style.border = "";
+    inputEmt.removeEventListener("keypress", editText);
+    inputEmt.addEventListener("keypress", inputText);
+    sendBtn.removeEventListener("click", sendEditText);
+    sendBtn.addEventListener("click", sendText);
+  }
+}
+
+function sendEditText(e){
+  if (inputEmt.value != ""){
+    for (var i = 0; i < userName.length; i++){
+      if(userName[i].checked){
+        name = userName[i].value;
+        break;
+      }
+    }
+    var msg = {"name":name, "time":Math.floor(Date.now() / 1000), "userMessage":inputEmt.value};
+    Chatty.setMsgInDOM(msg, editTarget);
+    inputEmt.blur();
+    inputEmt.value = "";
+    name = "Anonymous";
+    event.target.parentNode.style.border = "";
+    inputEmt.removeEventListener("keypress", editText);
+    inputEmt.addEventListener("keypress", inputText);
+    sendBtn.removeEventListener("click", sendEditText);
+    sendBtn.addEventListener("click", sendText);
+  }
+}
