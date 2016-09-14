@@ -7,39 +7,7 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
 </head>
 <body>
-  <nav>
-    <img src="tnvols.jpg" alt="TN VOLS VERSION" id="vol-state">
-
-    <div id="user-select">
-    <label >Select User Name:</label>
-    <input class="userName" type="radio" name="user" value="Alicia">Alicia
-    <input class="userName" type="radio" name="user" value="Bin">Bin
-    <input class="userName" type="radio" name="user" value="Lee">Lee
-    <input class="userName" type="radio" name="user" value="Max">Max
-    <input class="userName" type="radio" name="user" value="Sarah">Sarah
-    </div>
-
-    <input id="input">
-
-    <button id="send">Send</button>
-    <button id="clear">Clear message board</button>
-    <form id="checkboxForm">
-      <input type="checkbox" name="Dark Theme" id="darkTheme">Dark Theme
-      <input type="checkbox" name="Large Text" id="largeText">Large Text
-    </form>
-  </nav>
-
-
-
-  <h3>Messages:</h3>
-  <div id="messageOutput" class="CSSlightTheme CSSnormalText">
-
-  </div>
-
-  <!-- Button trigger modal -->
-  <a data-toggle="modal" href="#myModal1" class="btn btn-primary btn-lg">Launch demo modal</a>
-
-  <!-- Modal -->
+<!-- Modal -->
   <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -58,6 +26,37 @@
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
+  <nav>
+    <img src="tnvols.jpg" alt="TN VOLS VERSION" id="vol-state">
+
+    <div id="user-select">
+    <label >Select User Name:</label>
+    <input class="userName" type="radio" name="user" value="Alicia">Alicia
+    <input class="userName" type="radio" name="user" value="Bin">Bin
+    <input class="userName" type="radio" name="user" value="Lee">Lee
+    <input class="userName" type="radio" name="user" value="Max">Max
+    <input class="userName" type="radio" name="user" value="Sarah">Sarah
+    </div>
+<span>
+    <input id="input">
+
+    <button id="send">Send</button>
+    <button id="clear">Clear message board</button>
+    </span>
+    <form id="checkboxForm">
+      <!-- Button trigger modal -->
+  <a data-toggle="modal" href="#myModal1" class="btn btn-primary btn-lg">Launch demo modal</a>
+      <input type="checkbox" name="Large Text" id="largeText">Large Text
+    </form>
+  </nav>
+
+  <div>Messages:</div>
+  <div id="messageOutput" class="CSSlightTheme CSSnormalText">
+
+  </div>
+
+
+
 
   <script src="input.js" type="text/javascript" charset="utf-8" async defer></script>
   <script src="json.js" type="text/javascript" charset="utf-8" async defer></script>

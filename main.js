@@ -5,6 +5,7 @@ var btnSaveChange = document.getElementById("saveChange");
 var userName = document.getElementsByClassName("userName");
 var sendBtn = document.getElementById("send");
 var editTarget = "";
+var checkboxEmt = document.getElementById("checkboxForm")
 
 // load and display json file
 Chatty.getJson("message1.json", msgToDOM);
@@ -25,9 +26,14 @@ sendBtn.addEventListener("click", sendText);
 btnSaveChange.addEventListener("click", function changeTheme(){
   var bgColor = document.getElementById("custom-background").value;
   var textColor = document.getElementById("custom-text").value;
-  console.log(bgColor, textColor);
   outputEmt.style.background = bgColor;
   outputEmt.style.color = textColor;
+});
+
+checkboxEmt.addEventListener("change", function() {
+  if(event.target.id === "largeText") {
+    outputEmt.classList.toggle("CSSlargeText");
+  }
 });
 
 // Handle the click event on clear button
