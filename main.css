@@ -1,6 +1,5 @@
 * {
   font-family: 'Open Sans Condensed', sans-serif;
-
 }
 
 body {
@@ -9,11 +8,6 @@ body {
   margin: 0 auto;
 }
 
-h1 {
-  display: inline;
-  float: left;
-
-}
  nav img {
   width: 400px;
   height: 100px;
@@ -22,26 +16,13 @@ h1 {
 
 nav {
   position: fixed;
+  top: 0;
   z-index: 10;
-  /*margin-top: 50px;*/
   background-color: white;
   width: 960px;
   font-size: 1.2em;
   border: 2px solid black;
   padding-bottom: 22px;
-}
-
-h3 {
-  margin-top: 100px;
-}
-
-
-#messageOutput {
-
-  margin-top: 200px;
-
-  /*padding-top: ;*/
-
 }
 
 #input  {
@@ -63,11 +44,11 @@ margin-top: 10px;
   border: 2px solid black;
 }
 
-.CSSdarkTheme {
+/*.CSSdarkTheme {
   background-color: black;
   color: white;
   border: 2px solid white;
-}
+}*/
 
 .CSSnormalText {
   font-size: 1.2em;
@@ -77,15 +58,13 @@ margin-top: 10px;
   font-size: 2em;
 }
 
-.message1234:nth-of-type(2n) {
+.messages:nth-of-type(2n) {
   background-color: darkgray;
-box-shadow: 0 0 2px black;
-padding: 2px 2px;
+  box-shadow: 0 0 2px black;
 }
 
-.message1234 {
-  padding: 5px;
-
+.messages {
+  padding: 5px 15px;
 }
 
 #vol-state {
@@ -114,12 +93,16 @@ padding: 2px 2px;
   font-size: small;
 }
 
+#msgLabel {
+  margin-top: 165px;
+  font-weight: bolder;
+}
+
 /*  message bubble */
 .chat {
     width: 400px;
     display: inline-flex;
 }
-
 
 .bubble {
     background-color: white;
@@ -156,34 +139,7 @@ padding: 2px 2px;
     left: -9px;
 }
 
-
 .delete-edit {
   float: right;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
