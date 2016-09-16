@@ -23,7 +23,12 @@ inputEmt.addEventListener("keypress", inputText);
 sendBtn.addEventListener("click", inputText);
 
 // change message theme in display
-btnSaveChange.addEventListener("click", function changeTheme(){
+document.getElementById("modal").addEventListener("click", function(event){
+  event.preventDefault();
+  $('#myModal1').modal('show');
+});
+
+btnSaveChange.addEventListener("click", function changeTheme(event){
   event.preventDefault();
   var bgColor = document.getElementById("custom-background").value;
   var textColor = document.getElementById("custom-text").value;
