@@ -19,7 +19,7 @@ The chatroom was to have the following requirements fufilled in order to be comp
 1. Create an element to serve as the navigation bar for your application.
 1. Create an element to hold the logo for your application. It can be as simple as text, but if you want to find an image, that's fine.
 1. Create a input field for a user to enter in a message.
-![vol-state](newMessage.jpg)
+![vol-state](readmeImages/newMessage.jpg)
 1. Add an event listener for "keypress" and detect when then return key has been pressed in the message field.
 1. When return key is detected, you'll create a new message (*see details below*).
 1. Create a button to clear all messages.
@@ -42,7 +42,7 @@ btnClearEmt.addEventListener("click", function(){
 ### Options
 
 1. Create two checkboxes below the message input field. One labeled "Dark theme" and the other labeled "Large text".
-![vol-state](homescreen.jpg)
+![vol-state](readmeImages/homescreen.jpg)
 1. When the user clicks on the dark theme checkbox, change the background color of your application to a dark gray, and the font color for messages should be white(ish)... you pick.
 1. If the user unchecks the box, the background color should change back to white with black text for messages.
 
@@ -51,7 +51,7 @@ btnClearEmt.addEventListener("click", function(){
 1. When the user presses the return key in the message field, the new message should be inserted into the message area.
 1. The message should have a button displayed after it with the text "Delete" inside of it.
 1. When the delete button next to a message is clicked, only that message should be removed from the DOM.
-![vol-state](deleteTwoMessages.jpg)
+![vol-state](readmeImages/deleteTwoMessages.jpg)
 
 
 ### Modular Code
@@ -124,7 +124,7 @@ function msgToDOM(dataObj){
 
 1. Let users edit an existing message. Add an edit button next to the delete button that, when clicked, will take the message and put it back in the message input at the top.
 1. Once user edits the message and presses the return key again, the message text in the list should be updated.
-![vol-state](editChatty.jpg)
+![vol-state](readmeImages/editChatty.jpg)
 
 ### Custom themes
 
@@ -134,7 +134,7 @@ function msgToDOM(dataObj){
 1. Inside the modal, show two color picker fields - one for background color and one for font color.
 1. Add a *Save* and *Cancel* button to modal.
 1. When user clicks *Save* apply the chosen colors.
-![vol-state](customcolor.jpg)
+![vol-state](readmeImages/customcolor.jpg)
 
 ### Multiple users
 
@@ -144,7 +144,7 @@ function msgToDOM(dataObj){
 1. Keep in mind that this will likely change the structure of your JSON file since the pre-loaded messages have to have this information on them.
 
 ###### If not user is selected a 'Anonymous' username is given. 
-![vol-state](anonymous.jpg)
+![vol-state](readmeImages/anonymous.jpg)
 
 ##### HTML of where the users are
 ```
@@ -185,4 +185,4 @@ function msgToDOM(dataObj){
 1. Again, this will change the structure of your JSON file.
 
 # Completed Project Image
-![vol-state](largetext.jpg)
+![vol-state](readmeImages/largetext.jpg)
