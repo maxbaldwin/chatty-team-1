@@ -4,8 +4,8 @@ var outputEmt = document.getElementById("messageOutput");
 var btnSaveChange = document.getElementById("saveChange");
 var userName = document.getElementsByClassName("userName");
 var sendBtn = document.getElementById("send");
-var checkboxEmt = document.getElementById("checkboxForm")
-var editTargetId = "";
+var checkboxEmt = document.getElementById("checkboxForm");
+var editTargetId = undefined;
 var name = "Anonymous";
 
 // load and display json file
@@ -56,21 +56,17 @@ btnClearEmt.addEventListener("click", function(){
 document.querySelector("body").addEventListener("click", function(event) {
   // Handle the click event on delete button
   if (event.target.className === "btnDelete"){
-    if (editTargetId != "") {
+    if (editTargetId != undefined) {
       document.getElementById(editTargetId).parentNode.parentNode.style.border = "";
-      editTargetId = "";
+      editTargetId = undefined;
       inputEmt.value = "";
-      inputEmt.removeEventListener("keypress", editText);
-      inputEmt.addEventListener("keypress", inputText);
-      sendBtn.removeEventListener("click", editText);
-      sendBtn.addEventListener("click", inputText);
     }
     Chatty.deleteMessage(event.target.id);
   }
 
   // Handle the click event on edit button
   if (event.target.className === "btnEdit"){
-    if (editTargetId != "" && editTargetId != event.target.id) {
+    if (editTargetId != undefined && editTargetId != event.target.id) {
       document.getElementById(editTargetId).parentNode.parentNode.style.border = "";
     }
     editTargetId = event.target.id;
@@ -78,10 +74,6 @@ document.querySelector("body").addEventListener("click", function(event) {
     var targetMsg = event.target.parentNode.previousSibling.childNodes;
     inputEmt.value = targetMsg[0].innerHTML;
     inputEmt.focus();
-    inputEmt.removeEventListener("keypress", inputText);
-    inputEmt.addEventListener("keypress", editText);
-    sendBtn.removeEventListener("click", inputText);
-    sendBtn.addEventListener("click", editText);
   }
 });
 
@@ -94,31 +86,15 @@ function inputText(e){
       }
     }
     var msg = {"name":name, "time":Math.floor(Date.now() / 1000), "userMessage":inputEmt.value};
-    Chatty.setMsgInDOM(msg);
-    inputEmt.blur();
-    inputEmt.value = "";
-    name = "Anonymous";
-    btnClearEmt.removeAttribute("disabled");
-  }
-}
-
-function editText(e){
-  if(e.keyCode === 13 || (e.type === "click" && inputEmt.value != "")){
-    for (var i = 0; i < userName.length; i++){
-      if(userName[i].checked){
-        name = userName[i].value;
-        break;
-      }
-    }
-    var msg = {"name":name, "time":Math.floor(Date.now() / 1000), "userMessage":inputEmt.value};
     Chatty.setMsgInDOM(msg, editTargetId);
     inputEmt.blur();
     inputEmt.value = "";
     name = "Anonymous";
-    event.target.parentNode.parentNode.style.border = "";
-    inputEmt.removeEventListener("keypress", editText);
-    inputEmt.addEventListener("keypress", inputText);
-    sendBtn.removeEventListener("click", editText);
-    sendBtn.addEventListener("click", inputText);
- }
+    btnClearEmt.removeAttribute("disabled");
+    if (editTargetId != undefined){
+      event.target.parentNode.parentNode.style.border = "";
+      editTargetId = undefined;
+    }
+  }
 }
+
