@@ -42,7 +42,7 @@ btnClearEmt.addEventListener("click", function(){
 ### Options
 
 1. Create two checkboxes below the message input field. One labeled "Dark theme" and the other labeled "Large text".
-![vol-state](largetext.jpg)
+![vol-state](homescreen.jpg)
 1. When the user clicks on the dark theme checkbox, change the background color of your application to a dark gray, and the font color for messages should be white(ish)... you pick.
 1. If the user unchecks the box, the background color should change back to white with black text for messages.
 
@@ -124,6 +124,7 @@ function msgToDOM(dataObj){
 
 1. Let users edit an existing message. Add an edit button next to the delete button that, when clicked, will take the message and put it back in the message input at the top.
 1. Once user edits the message and presses the return key again, the message text in the list should be updated.
+![vol-state](editChatty.jpg)
 
 ### Custom themes
 
@@ -184,4 +185,4 @@ function msgToDOM(dataObj){
 1. Again, this will change the structure of your JSON file.
 
 # Completed Project Image
-![vol-state](homescreen.jpg)
+![vol-state](largetext.jpg)
