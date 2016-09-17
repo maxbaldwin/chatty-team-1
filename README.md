@@ -45,6 +45,34 @@ btnClearEmt.addEventListener("click", function(){
 ![vol-state](readmeImages/homescreen.jpg)
 1. When the user clicks on the dark theme checkbox, change the background color of your application to a dark gray, and the font color for messages should be white(ish)... you pick.
 1. If the user unchecks the box, the background color should change back to white with black text for messages.
+##### Changing theme code in maing.js and index.html
+```
+document.getElementById("modal").addEventListener("click", function(event){
+  event.preventDefault();
+  $('#myModal1').modal('show');
+});
+```
+```
+<!-- Modal -->
+  <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h4 class="modal-title">Custom Theme</h4>
+        </div>
+        <div class="modal-body">
+           <input id="custom-background" type="color">Background Color
+            <input id="custom-text" type="color">Text Color
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button id="saveChange" type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+```
 
 ### Messages
 1. When the page is first loaded, you must load 5 messages from a local JSON file and pre-fill a message area `<div>` below the input field that will also hold all new messages as they get created.
