@@ -1,42 +1,85 @@
-# Chatty Group Project
+![vol-state](tnvols.jpg)
 
-## Setup
+# Contributors
+* [Lee Hankins](https://github.com/utleroy)
+* [Bin Li](https://github.com/LibE4)
+* [Alicia Miceli](https://github.com/aliciamiceli)
+* [Sarah Ward](https://github.com/sward42)
 
-Every teammate copy and run the following commands in the host machine terminal.
+#### Product Tester
+* [Max Baldwin](https://github.com/maxbaldwin)
 
-```bash
-mkdir -p ~/workspace/group-projects && cd $_
-git clone [Github Classroom repo URL]
-cd [repo name]
-```
+##### Basic Premise
+Evening-Cohort 4 was split among groups to create a basic single-page chatroom. 
+The chatroom was to have the following requirements fufilled in order to be completed. 
 
 ## Requirements
-
-Check out the [simple wireframe](https://app.moqups.com/chortlehoort/uGBbLbK46Y/view/page/a3bd0c733) for this application on Moqups.com. You can make your final interface as fancy as you like, but keep the general layout similar to the wireframe.
-
 ### Navigation bar
 
 1. Create an element to serve as the navigation bar for your application.
 1. Create an element to hold the logo for your application. It can be as simple as text, but if you want to find an image, that's fine.
 1. Create a input field for a user to enter in a message.
+![vol-state](readmeImages/newMessage.jpg)
 1. Add an event listener for "keypress" and detect when then return key has been pressed in the message field.
 1. When return key is detected, you'll create a new message (*see details below*).
 1. Create a button to clear all messages.
 1. When the user clicks the clear messages button, all current chat messages should be removed from the application.
 1. If there are no messages, then the clear messages button should be disabled (*see example above*).
 1. The navigation bar should remain at the top of the screen, even if the contents of the page start to scroll.
+#### The tasks about clearing messages are handled below in main.js
+```
+// Handle the click event on clear button
+btnClearEmt.addEventListener("click", function(){
+  outputEmt.innerHTML = "";
+  Chatty.removeMsg();
+  // disable clear button when no message appear
+  if (Chatty.getMsg().length === 0){
+    btnClearEmt.setAttribute("disabled", true);
+  }
+});
+```
 
 ### Options
 
 1. Create two checkboxes below the message input field. One labeled "Dark theme" and the other labeled "Large text".
+![vol-state](readmeImages/homescreen.jpg)
 1. When the user clicks on the dark theme checkbox, change the background color of your application to a dark gray, and the font color for messages should be white(ish)... you pick.
 1. If the user unchecks the box, the background color should change back to white with black text for messages.
+##### Changing theme code in maing.js and index.html
+```
+document.getElementById("modal").addEventListener("click", function(event){
+  event.preventDefault();
+  $('#myModal1').modal('show');
+});
+```
+```
+<!-- Modal -->
+  <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h4 class="modal-title">Custom Theme</h4>
+        </div>
+        <div class="modal-body">
+           <input id="custom-background" type="color">Background Color
+            <input id="custom-text" type="color">Text Color
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button id="saveChange" type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+```
 
 ### Messages
 1. When the page is first loaded, you must load 5 messages from a local JSON file and pre-fill a message area `<div>` below the input field that will also hold all new messages as they get created.
 1. When the user presses the return key in the message field, the new message should be inserted into the message area.
 1. The message should have a button displayed after it with the text "Delete" inside of it.
 1. When the delete button next to a message is clicked, only that message should be removed from the DOM.
+![vol-state](readmeImages/deleteTwoMessages.jpg)
 
 
 ### Modular Code
@@ -47,61 +90,69 @@ Create multiple IIFEs, following the Single Responsibility Principle, that perfo
 1. One IIFE should contain a function that accepts an element `id`, and the user message, and then add the user's message - along with the delete button - to the specified parent element. Each message should be stored in a private array in this IIFE. This IIFE should also expose a function to read all messages, and delete a single message.
 1. One IIFE should accept a message element `id` and then remove the correct element from the DOM. This IIFE should also remove the corresponding message from the private array that was created in the previous IIFE.
 
-## Helpful hints
-
-### Adding listeners to dynamically created elements
-
-When you add a DOM element to your page with JavaScript, you cannot add a listener to them directly in your code with `addEventListener`. This is because the element didn't exist when your JavaScript file got parsed and executed by the browser when it loaded. What you need to do is listen for the event on the `<body>` element, and then inspect what the target of the event is (i.e. which element the user actually performed the action on).
-
-```js
-document.querySelector("body").addEventListener("click", function(event) {
-  console.log(event);
-
-  // Handle the click event on any li
-  if (event.target.tagName.toLowerCase() === "li") {
-    console.log("You clicked on an <li> element");
-  }
-
-  // Handle the click event on any DOM element with a certain class
-  if (event.target.className === "article-section") {
-    console.log("You clicked on an `article-section` element");
-  }
-
-  // Inspect the `id` property of the event target
-  if (event.target.id === "page-title") {
-    console.log("You clicked on the page-title element");
-  }
-});
-```
-
-### Setting element attributes
-
-You can use JavaScript to [set any attribute](https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute) on a DOM element. You've seen how to add/remove classes with `classList.add()`, `classList.remove()`, and `classList.toggle()`, but you can also add `id`, `href`, `src`, or any other attribute.
-
-Here's an example of how to add a `disabled` attribute to a button in the DOM.
-
-```html
-<button class="clear-messages">Clear messages</button>
-```
-
-```js
-// This will disable the first button with a class of "button-message"
-document.getElementsByClassName("clear-messages")[0].setAttribute("disabled", true);
-```
-
-
 ## Bonus criteria
-
-For you overachievers, once you've completed the basic criteria, take a stab at these.
+##### Bonus items were addressed by the team as well. Those items are described below. 
 
 ### Multiple JSON files
 
-Instead of having one JSON file with five messages in it, break each message into its own JSON file. How do you handle loading them in succession?
+##### "message1.json"
+```
+{
+  "messages":[
+    {
+      "name": "Bin",
+      "time": "11133214141",
+      "userMessage":"Hello there!"
+    },
+    {
+      "name": "Alicia",
+      "time": "11133214151",
+      "userMessage":"Go away!"
+    }
+  ]
+}
+```
+##### "message2.json"
+```
+{
+  "messages":[
+    {
+      "name": "Sarah",
+      "time": "11133214162",
+      "userMessage":"Welcome back!"
+    },
+    {
+      "name": "Lee",
+      "time": "11133214173",
+      "userMessage":"Leave again."
+    },
+    {
+      "name": "Max",
+      "time": "11133214187",
+      "userMessage":"Nice to see you again."
+    }
+  ]
+}
+```
+
+#### Instead of having one JSON file with five messages in it, break each message into its own JSON file. How do you handle loading them in succession?
+See "main.js" to where this was addressed.
+```
+Chatty.getJson("message1.json", msgToDOM);
+Chatty.getJson("message2.json", msgToDOM);
+function msgToDOM(dataObj){
+  for (var i = 0; i < dataObj.messages.length; i++){
+    Chatty.setMsgInDOM(dataObj.messages[i]);
+  }
+  btnEmt.removeAttribute("disabled");
+}
+```
 
 ### Editing
 
 1. Let users edit an existing message. Add an edit button next to the delete button that, when clicked, will take the message and put it back in the message input at the top.
 1. Once user edits the message and presses the return key again, the message text in the list should be updated.
+![vol-state](readmeImages/editChatty.jpg)
 
 ### Custom themes
 
@@ -111,26 +162,55 @@ Instead of having one JSON file with five messages in it, break each message int
 1. Inside the modal, show two color picker fields - one for background color and one for font color.
 1. Add a *Save* and *Cancel* button to modal.
 1. When user clicks *Save* apply the chosen colors.
+![vol-state](readmeImages/customcolor.jpg)
 
 ### Multiple users
 
-1. Create an object in your JavaScript that holds an array of names (*see example below*).
+1. Create an object in your JavaScript that holds an array of names.
 1. Next to the message input box, there should be a radio button group for each name in the list.
 1. When a user enters a message, it should be prepended with the chosen user's name, in bold text.
 1. Keep in mind that this will likely change the structure of your JSON file since the pre-loaded messages have to have this information on them.
 
-```js
-// User object
-var users = {
-  names: ["Xavier", "Joanna", "Mackenzie", "Gunter", "Iveta", "Sven"];
-};
+###### If not user is selected a 'Anonymous' username is given. 
+![vol-state](readmeImages/anonymous.jpg)
+
+##### HTML of where the users are
+```
+    <div id="user-select">
+    <label >Select UserName:</label>
+    <input type="radio" name="user" value="Alicia">Alicia
+    <input type="radio" name="user" value="Bin">Bin
+    <input type="radio" name="user" value="Lee">Lee
+    <input type="radio" name="user" value="Max">Max
+    <input type="radio" name="user" value="Sarah">Sarah
+    </div>
 ```
 
 ### Message limit
 
 1. Only show the last 20 messages.
 
+##### See code below where the 20 message limit is used. 
+
+```
+    var msgHTML = "";
+    for (var i = msgCollection.length-1; i >= Math.max(msgCollection.length - 20, 0); i--){
+      msgHTML += `<div id="msg-${i}" class="message1234">`;
+        msgHTML += `<div class="name">${msgCollection[i].name}</div>`;
+        msgHTML += `<div class="time">${msgCollection[i].time}</div>`;
+        msgHTML += `<div class="message">${msgCollection[i].userMessage}</div>`;
+        msgHTML += `<button class="btnDelete" id="btn-${i}">Delete</button>`;
+        msgHTML += `<button class="btnEdit" id="btnEdit-${i}">Edit</button>`;
+      msgHTML += `</div>`;
+    }
+    document.getElementById("messageOutput").innerHTML = msgHTML;
+  }
+```
+
 ### Timestamp
 
 1. Put a timestamp on each message.
 1. Again, this will change the structure of your JSON file.
+
+# Completed Project Image
+![vol-state](readmeImages/largetext.jpg)
